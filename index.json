@@ -1,5 +1,7 @@
-{
-    "id": "mangadex",
-    "cover": "https://raw.githubusercontent.com/De1p0/Urayomi-Extensions/refs/heads/main/covers/mangadex.png",
-    "script": "https://raw.githubusercontent.com/De1p0/Urayomi-Extensions/refs/heads/main/sources/mangadex.js"
-}
+[
+    {
+        "id": "mangadex",
+        "cover": "https://raw.githubusercontent.com/De1p0/Urayomi-Extensions/refs/heads/main/covers/mangadex.png",
+        "script": "https://raw.githubusercontent.com/De1p0/Urayomi-Extensions/refs/heads/main/sources/mangadex.js"
+    }
+]
