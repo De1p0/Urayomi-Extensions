@@ -23,10 +23,9 @@ export class DefaultExtension {
         return { "Referer": `${this.source.baseUrl}/` };
     }
 
-
     async fetchUrl(url) {
         const res = await this.corFetch(url);
-        return await res.json();
+        return await res.text();
     }
 
     async request(slug) {
