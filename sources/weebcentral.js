@@ -12,16 +12,21 @@ export class DefaultExtension {
         pkgPath: "manga/src/en/weebcentral.js"
     }) {
         this.source = source;
-        this.client = new Client();
     }
 
     getHeaders(url) {
         return { "Referer": `${this.source.baseUrl}/` };
     }
 
+    async fetchUrl(url) {
+        const res = await fetch(url);
+        return await res.json();
+    }
+
+
     async request(slug) {
         var url = `${this.source.baseUrl}${slug}`
-        var res = await this.client.get(url);
+        var res = await this.fetchUrl(url);
         return new Document(res.body);
     }
 
