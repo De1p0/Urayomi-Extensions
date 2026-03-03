@@ -2,7 +2,7 @@
 
 
 export class DefaultExtension {
-    constructor(source = {
+    constructor(corFetch, source = {
         "name": "MangaDex",
         "langs": ["ar", "bn", "bg", "my", "ca", "zh", "zh-hk", "cs", "da", "nl", "en", "tl", "fi", "fr", "de", "el", "he", "hi", "hu", "id", "it", "ja", "kk", "ko", "la", "lt", "ms", "mn", "ne", "no", "fa", "pl", "pt-br", "pt", "ro", "ru", "sh", "es-419", "es", "sv", "ta", "th", "tr", "uk", "vi"],
         "ids": {
@@ -59,7 +59,7 @@ export class DefaultExtension {
         "itemType": 0,
         "version": "0.1.4",
         "pkgPath": "manga/src/all/mangadex.js"
-    }, corFetch) {
+    }) {
         this.source = source;
         this.corFetch = corFetch;
     }

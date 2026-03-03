@@ -2,7 +2,7 @@
 
 
 export class DefaultExtension {
-    constructor(source = {
+    constructor(corFetch, source = {
         "id": 693275080,
         "name": "Weeb Central",
         "lang": "en",
@@ -13,7 +13,7 @@ export class DefaultExtension {
         "itemType": 0,
         "version": "0.1.0",
         "pkgPath": "manga/src/en/weebcentral.js"
-    }, corFetch) {
+    }) {
         this.source = source
         this.corFetch = corFetch
     }
