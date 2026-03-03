@@ -1,28 +1,33 @@
+// REMASTERED SOURCE FROM https://github.com/m2k3a/mangayomi-extensions
 
-export class DefaultExtension {
+const mangayomiSources = [];
+
+class DefaultExtension {
     constructor(source = {
-        name: "Weeb Central",
-        langs: ["en"],
-        baseUrl: "https://weebcentral.com",
-        apiUrl: "", // No public API
-        iconUrl: "https://www.google.com/s2/favicons?sz=128&domain=https://weebcentral.com",
-        typeSource: "single",
-        itemType: 0,
-        version: "0.1.0",
-        pkgPath: "manga/src/en/weebcentral.js"
+        "id": 693275080,
+        "name": "Weeb Central",
+        "lang": "en",
+        "baseUrl": "https://weebcentral.com",
+        "apiUrl": "",
+        "iconUrl": "https://www.google.com/s2/favicons?sz=128&domain=https://weebcentral.com",
+        "typeSource": "single",
+        "itemType": 0,
+        "version": "0.1.0",
+        "pkgPath": "manga/src/en/weebcentral.js"
     }) {
-        this.source = source;
+        this.source = source
     }
+
 
     getHeaders(url) {
         return { "Referer": `${this.source.baseUrl}/` };
     }
 
+
     async fetchUrl(url) {
         const res = await fetch(url);
         return await res.json();
     }
-
 
     async request(slug) {
         var url = `${this.source.baseUrl}${slug}`
