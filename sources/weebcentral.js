@@ -13,8 +13,9 @@ export class DefaultExtension {
         "itemType": 0,
         "version": "0.1.0",
         "pkgPath": "manga/src/en/weebcentral.js"
-    }) {
+    }, corFetch) {
         this.source = source
+        this.corFetch = corFetch
     }
 
 
@@ -24,7 +25,7 @@ export class DefaultExtension {
 
 
     async fetchUrl(url) {
-        const res = await fetch(url);
+        const res = await this.corFetch(url);
         return await res.json();
     }
 

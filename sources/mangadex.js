@@ -59,12 +59,12 @@ export class DefaultExtension {
         "itemType": 0,
         "version": "0.1.4",
         "pkgPath": "manga/src/all/mangadex.js"
-    }) {
+    }, corFetch) {
         this.source = source;
-
+        this.corFetch = corFetch;
     }
     async fetchUrl(url, headers = {}) {
-        const res = await fetch(url, { headers });
+        const res = await this.corFetch(url, { headers });
 
         if (!res.ok) {
             throw new Error(`HTTP error ${res.status}`);
