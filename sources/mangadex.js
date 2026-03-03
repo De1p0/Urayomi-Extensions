@@ -66,7 +66,7 @@ export class DefaultExtension {
 
     async fetchUrl(url) {
         const res = await fetch(url);
-        return await res.json();
+        return await res;
     }
 
     getHeaders(url) {
