@@ -1,8 +1,7 @@
 // REMASTERED SOURCE FROM https://github.com/m2k3a/mangayomi-extensions
 
-const mangayomiSources = [];
 
-class DefaultExtension {
+export class DefaultExtension {
     constructor(source = {
         "id": 693275080,
         "name": "Weeb Central",
