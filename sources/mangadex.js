@@ -63,10 +63,18 @@ export class DefaultExtension {
         this.source = source;
 
     }
+    async fetchUrl(url, headers = {}) {
+        const res = await fetch(url, { headers });
 
-    async fetchUrl(url) {
-        const res = await fetch(url);
-        return await res;
+        if (!res.ok) {
+            throw new Error(`HTTP error ${res.status}`);
+        }
+
+        const text = await res.text();
+
+        return {
+            body: text
+        };
     }
 
     getHeaders(url) {
