@@ -1,17 +1,26 @@
 // SOURCE CODE ADAPTED FROM https://github.com/kodjodevf/mangayomi-extensions 
 
-class SharedPreferences {
-    get(key) {
-        return sendMessage("get", JSON.stringify([key]));
-    }
-    getString(key, defaultValue) {
-        return sendMessage("getString", JSON.stringify([key, defaultValue]));
-    }
-    setString(key, defaultValue) {
-        return sendMessage("setString", JSON.stringify([key, defaultValue]));
+const _storage = {};
+
+function sendMessage(action, payload) {
+    const args = JSON.parse(payload);
+
+    switch (action) {
+        case "get":
+            return _storage[args[0]] ?? null;
+
+        case "getString":
+            return _storage[args[0]] ?? args[1] ?? "";
+
+        case "setString":
+            _storage[args[0]] = args[1];
+            return true;
+
+        default:
+            console.warn(`sendMessage: Unknown action "${action}"`);
+            return null;
     }
 }
-
 export class DefaultExtension {
     constructor(corFetch, source = {
         name: "AllManga",
