@@ -12,7 +12,7 @@ class SharedPreferences {
     }
 }
 
-export class AllMangaExtension {
+export class DefaultExtension {
     constructor(corFetch, source = {
         name: "AllManga",
         langs: ["en"],
