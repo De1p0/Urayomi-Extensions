@@ -118,18 +118,21 @@ export class DefaultExtension {
     }
 
     async search(query, page) {
-
         const res = await this.post(
             Queries.buildSearchQuery({ page, query })
         );
 
-        const items = JSON.parse(res.body)?.data?.mangas?.edges ?? [];
+        const edges = JSON.parse(res.body)?.data?.mangas?.edges ?? [];
 
-        return items.map(item => ({
+        const list = edges.map(item => ({
             name: MangaUtils.getMangaName(item),
             imageUrl: URLS.buildMangaCoverUrl(item.thumbnail),
-            link: URLS.buildMangaURL(item._id),
+            link: `/manga/${item._id}`,
         }));
+
+        const hasNextPage = list.length === 20;
+
+        return { hasNextPage, list };
     }
 
     async getDetail(url) {
