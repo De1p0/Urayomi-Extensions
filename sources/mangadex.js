@@ -168,6 +168,7 @@ export class DefaultExtension {
     }
     async getDetail(url) {
         const detailUrl = `${this.source.apiUrl}${url}?includes[]=cover_art&includes[]=author&includes[]=artist`;
+        console.log(detailUrl); // if this shit ends up being wrong imgonna end someone
         const response = await this.fetchUrl(detailUrl, this.getHeaders());
         const data = JSON.parse(response.body).data;
         const manga = {};
