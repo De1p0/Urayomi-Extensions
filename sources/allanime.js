@@ -1,5 +1,4 @@
 // SOURCE CODE ADAPTED FROM https://github.com/kodjodevf/mangayomi-extensions 
-
 const _storage = {};
 
 function sendMessage(action, payload) {
@@ -21,6 +20,18 @@ function sendMessage(action, payload) {
             return null;
     }
 }
+class SharedPreferences {
+    get(key) {
+        return sendMessage("get", JSON.stringify([key]));
+    }
+    getString(key, defaultValue) {
+        return sendMessage("getString", JSON.stringify([key, defaultValue]));
+    }
+    setString(key, defaultValue) {
+        return sendMessage("setString", JSON.stringify([key, defaultValue]));
+    }
+}
+
 export class DefaultExtension {
     constructor(corFetch, source = {
         name: "AllManga",
