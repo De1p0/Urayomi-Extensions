@@ -287,7 +287,7 @@ const MangaUtils = {
 
     combineGenres: (genres, tags) =>
         [...new Set([...(genres ?? []), ...(tags ?? [])])],
-};
+}; t
 
 const Queries = {
 

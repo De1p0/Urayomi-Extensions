@@ -25,6 +25,7 @@ class SharedPreferences {
 export class DefaultExtension {
     constructor(corFetch, source = {
         "name": "MangaDex",
+        "lang": "en",
         "langs": ["ar", "bn", "bg", "my", "ca", "zh", "zh-hk", "cs", "da", "nl", "en", "tl", "fi", "fr", "de", "el", "he", "hi", "hu", "id", "it", "ja", "kk", "ko", "la", "lt", "ms", "mn", "ne", "no", "fa", "pl", "pt-br", "pt", "ro", "ru", "sh", "es-419", "es", "sv", "ta", "th", "tr", "uk", "vi"],
         "ids": {
             "ar": 202373705,
@@ -111,7 +112,7 @@ export class DefaultExtension {
     }
     async getLatestUpdates(page) {
         const offset = 20 * (page - 1);
-        const url = `${this.source.apiUrl}/chapter?limit=20&offset=${offset}&translatedLanguage[]=${this.source.lang}&includeFutureUpdates=0&order[publishAt]=desc&includeFuturePublishAt=0&includeEmptyPages=0`;
+        const url = `${this.source.apiUrl}/chapter?limit=20&offset=${offset}&translatedLanguage[]=${this.source.lang}&includeFutureUpdates=0&order[publishAt]=desc&includeFuturePublishAt=0`;
         const response = await this.fetchUrl(url, this.getHeaders());
         const mangaIds = Array.from(
             new Set(
@@ -222,7 +223,7 @@ export class DefaultExtension {
         let hasMoreResults = true;
 
         while (hasMoreResults) {
-            const url = `${this.source.apiUrl}/manga/${mangaId}/feed?limit=500&offset=${offset}&includes[]=user&includes[]=scanlation_group&order[volume]=desc&order[chapter]=desc&translatedLanguage[]=${lang}&includeFuturePublishAt=0&includeEmptyPages=0&contentRating[]=safe&contentRating[]=suggestive`;
+            const url = `${this.source.apiUrl}/manga/${mangaId}/feed?limit=500&offset=${offset}&includes[]=user&includes[]=scanlation_group&order[volume]=desc&order[chapter]=desc&translatedLanguage[]=${lang}&includeFuturePublishAt=0&contentRating[]=safe&contentRating[]=suggestive`;
             const res = await this.fetchUrl(url, this.getHeaders());
             const paginatedData = JSON.parse(res.body);
             const limit = paginatedData?.limit ?? 0;
